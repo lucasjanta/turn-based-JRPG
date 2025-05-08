@@ -27,4 +27,5 @@ func heal(amount):
 	$UI.show_battle_message(name + " recovered " + str(amount) + " HP")
 
 func update_ui():
-	$hplabel3.text = "HP: " + str(hp)
+	$hplabel3.text = str(hp)
+	$healthbar3.value = hp

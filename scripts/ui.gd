@@ -12,14 +12,18 @@ func show_player_options(player):
 	for child in $ActionMenu.get_children():
 		child.visible = false
 
-	if player.name == "Player1":
+	if player.name == "Percy":
+		$"../Sprite2D".visible = true
+		$"../Sprite2D".global_position.x = 106.0
 		$ActionMenu/Attack1.text = "Slash (10-20)"
 		$ActionMenu/Attack2.text = "Lunge (5-40)"
 		$ActionMenu/Heal.text = "Heal (30)"
 		$ActionMenu/Attack1.visible = true
 		$ActionMenu/Attack2.visible = true
 		$ActionMenu/Heal.visible = true
-	elif player.name == "Player2":
+	elif player.name == "Annabeth":
+		$"../Sprite2D".visible = true
+		$"../Sprite2D".global_position.x = 43.0
 		$ActionMenu/Attack1.text = "Strike (15)"
 		$ActionMenu/Attack2.text = "Area Slash (15 All)"
 		$ActionMenu/Heal.text = "Group Heal (15)"

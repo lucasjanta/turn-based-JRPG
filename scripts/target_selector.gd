@@ -15,6 +15,7 @@ func show_targets(targets):
 	for target in targets:
 		var btn = Button.new()
 		btn.text = target.name
+		btn.add_theme_font_size_override("font_size", 8)
 		btn.pressed.connect(func(): _on_target_selected(target))
 		$ButtonsContainer.add_child(btn)
 

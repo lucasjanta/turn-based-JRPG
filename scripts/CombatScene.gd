@@ -9,7 +9,7 @@ var is_player_turn = true
 var battle_log = []
 
 func _ready():
-	players = [$Player1, $Player2]
+	players = [$Percy, $Annabeth]
 	enemies = [$Minotaur, $Nightborne]
 	turn_queue = players + enemies
 	$UI.player_action_selected.connect(on_player_action)
@@ -33,6 +33,7 @@ func start_next_turn():
 		$UI.show_player_options(current_actor)
 	else:
 		is_player_turn = false
+		$Sprite2D.visible = false
 		await get_tree().create_timer(1.0).timeout
 		perform_enemy_action(current_actor)
 
@@ -49,7 +50,7 @@ func is_battle_over():
 	return false
 
 func on_player_action(action: String, target):
-	if current_actor.name == "Player1":
+	if current_actor.name == "Percy":
 		match action:
 			"Attack1":
 				current_actor.attack(target, randi_range(10, 20), 0.2)
@@ -57,7 +58,7 @@ func on_player_action(action: String, target):
 				current_actor.attack(target, randi_range(5, 40), 0.5)
 			"Heal":
 				current_actor.heal(30)
-	elif current_actor.name == "Player2":
+	elif current_actor.name == "Annabeth":
 		match action:
 			"Attack1":
 				current_actor.attack(target, 15, 0.1)
@@ -82,22 +83,22 @@ func perform_enemy_action(enemy):
 	if enemy.name == "Minotaur":
 		if move == 0:
 			var target = targets[randi() % targets.size()]
-			enemy.attack(target, randi_range(10, 15), 0.1)
 			$UI.show_battle_message(enemy.name + " attacks " + target.name)
+			enemy.attack(target, randi_range(10, 15), 0.1)
 		else:
+			$UI.show_battle_message(enemy.name + "used Bull Rush on all players")
 			for player in players:
 				if not player.is_dead():
 					enemy.attack(player, 20, 0.1)
-			$UI.show_battle_message(enemy.name + " used special move on all players")
 	elif enemy.name == "Nightborne":
 		if move == 0:
 			var target = targets[randi() % targets.size()]
-			enemy.attack(target, randi_range(15, 20), 0.1)
 			$UI.show_battle_message(enemy.name + " attacks " + target.name)
+			enemy.attack(target, randi_range(15, 20), 0.1)
 		else:
 			var target = targets[randi() % targets.size()]
+			$UI.show_battle_message(enemy.name + " used Nightmare Slash on " + target.name)
 			enemy.attack(target, 30, 0.1)
-			$UI.show_battle_message(enemy.name + " used powerful strike on " + target.name)
 
 	await get_tree().create_timer(1.0).timeout
 	start_next_turn()
