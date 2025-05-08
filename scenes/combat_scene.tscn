@@ -1,11 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://bb8yx0g2hcv3j"]
+[gd_scene load_steps=13 format=3 uid="uid://bb8yx0g2hcv3j"]
 
 [ext_resource type="Script" uid="uid://goxlrk6yfaa" path="res://scripts/CombatScene.gd" id="1_ik0t7"]
 [ext_resource type="Script" uid="uid://m8mkcnwk0wu6" path="res://scripts/player_1.gd" id="2_0vylu"]
 [ext_resource type="Texture2D" uid="uid://cimsc3imj0bht" path="res://assets/underworld background.jpg" id="2_6sw3s"]
 [ext_resource type="Script" uid="uid://bouq4rkumalne" path="res://scripts/player_2.gd" id="4_6ovae"]
 [ext_resource type="Texture2D" uid="uid://dsfvknr2lqhos" path="res://assets/PERCY.png" id="4_g0m11"]
-[ext_resource type="Texture2D" uid="uid://buuq6wbpxlkfg" path="res://assets/UI Health Bar.png" id="5_5qq3q"]
 [ext_resource type="Script" uid="uid://bb2115idlmkyp" path="res://scripts/enemy_1.gd" id="5_ivkwx"]
 [ext_resource type="Texture2D" uid="uid://c0ltxyukg0hah" path="res://assets/ANABETHH.png" id="6_5qq3q"]
 [ext_resource type="Script" uid="uid://b4lvsgc72jmpy" path="res://scripts/enemy_2.gd" id="6_6sw3s"]
@@ -30,20 +29,23 @@ script = ExtResource("2_0vylu")
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("4_g0m11")
 
-[node name="Node2D" type="Node2D" parent="Player1"]
-
-[node name="TextureProgressBar" type="TextureProgressBar" parent="Player1"]
-offset_left = -23.0
-offset_top = 19.0
-offset_right = 29.0
-offset_bottom = 28.0
-value = 100.0
-texture_over = ExtResource("5_5qq3q")
-tint_progress = Color(1, 0, 0, 1)
+[node name="hplabel" type="Label" parent="Player1"]
+offset_left = -24.0
+offset_top = -35.0
+offset_right = 34.0
+offset_bottom = -12.0
+text = "HP: 100"
 
 [node name="Player2" type="Node2D" parent="."]
 position = Vector2(39, 142)
 script = ExtResource("4_6ovae")
+
+[node name="hplabel2" type="Label" parent="Player2"]
+offset_left = -28.0
+offset_top = -35.0
+offset_right = 30.0
+offset_bottom = -12.0
+text = "HP: 100"
 
 [node name="Sprite2D" type="Sprite2D" parent="Player2"]
 scale = Vector2(1.5, 1.5)

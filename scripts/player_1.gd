@@ -18,7 +18,7 @@ func attack(target, base_dmg: int, crit_mult: float):
 	if is_charging:
 		dmg *= 2
 		is_charging = false
-	target.receive_damage(dmg)
+	target.receive_damage(int(dmg))
 	$"../UI".show_battle_message(name + " dealt " + str(int(dmg)) + " to " + target.name)
 
 func receive_damage(dmg):
@@ -26,23 +26,22 @@ func receive_damage(dmg):
 	update_ui()
 
 func defend():
-	$UI.show_battle_message(name + " is defending")
+	$"../UI".show_battle_message(name + " is defending")
 	# reduce damage next turn (not implemented in detail here)
 
 func charge():
 	is_charging = true
-	$UI.show_battle_message(name + " is charging a powerful attack!")
+	$"../UI".show_battle_message(name + " is charging a powerful attack!")
 
 func use_item(item):
 	if item == "potion":
 		hp = min(max_hp, hp + 30)
 		update_ui()
-		$UI.show_battle_message(name + " used a potion")
+		$"../UI".show_battle_message(name + " used a potion")
 
 func special_move(target):
 	var dmg = randi_range(15, 30)
 	target.receive_damage(dmg)
 
 func update_ui():
-	# update HP bars, etc.
-	pass
+	$hplabel.text = "HP: " + str(hp)

@@ -18,7 +18,7 @@ func attack(target, base_dmg: int, crit_mult: float):
 	if is_charging:
 		dmg *= 2
 		is_charging = false
-	target.receive_damage(dmg)
+	target.receive_damage(int(dmg))
 	$"../UI".show_battle_message(name + " dealt " + str(int(dmg)) + " to " + target.name)
 
 func receive_damage(dmg):
@@ -44,5 +44,5 @@ func special_move(target):
 	target.receive_damage(dmg)
 
 func update_ui():
-	# update HP bars, etc.
+	$hplabel2.text = "HP: " + str(hp)
 	pass
