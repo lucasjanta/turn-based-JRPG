@@ -1,0 +1,137 @@
+[gd_scene load_steps=14 format=3 uid="uid://bb8yx0g2hcv3j"]
+
+[ext_resource type="Script" uid="uid://goxlrk6yfaa" path="res://scripts/CombatScene.gd" id="1_ik0t7"]
+[ext_resource type="Script" uid="uid://m8mkcnwk0wu6" path="res://scripts/player_1.gd" id="2_0vylu"]
+[ext_resource type="Texture2D" uid="uid://cimsc3imj0bht" path="res://assets/underworld background.jpg" id="2_6sw3s"]
+[ext_resource type="Script" uid="uid://bouq4rkumalne" path="res://scripts/player_2.gd" id="4_6ovae"]
+[ext_resource type="Texture2D" uid="uid://dsfvknr2lqhos" path="res://assets/PERCY.png" id="4_g0m11"]
+[ext_resource type="Texture2D" uid="uid://buuq6wbpxlkfg" path="res://assets/UI Health Bar.png" id="5_5qq3q"]
+[ext_resource type="Script" uid="uid://bb2115idlmkyp" path="res://scripts/enemy_1.gd" id="5_ivkwx"]
+[ext_resource type="Texture2D" uid="uid://c0ltxyukg0hah" path="res://assets/ANABETHH.png" id="6_5qq3q"]
+[ext_resource type="Script" uid="uid://b4lvsgc72jmpy" path="res://scripts/enemy_2.gd" id="6_6sw3s"]
+[ext_resource type="Script" uid="uid://dber1owkvg6cg" path="res://scripts/ui.gd" id="7_g0m11"]
+[ext_resource type="Script" uid="uid://gxerhqf8ei5m" path="res://scripts/target_selector.gd" id="8_2edba"]
+[ext_resource type="Texture2D" uid="uid://c121cgapn718r" path="res://assets/Minotaur.png" id="8_g0m11"]
+[ext_resource type="Texture2D" uid="uid://l2wdomphjhgi" path="res://assets/Nightborne.png" id="10_5qq3q"]
+
+[node name="CombatScene" type="Node2D"]
+script = ExtResource("1_ik0t7")
+
+[node name="Bg" type="Sprite2D" parent="."]
+position = Vector2(191, 109)
+scale = Vector2(0.300199, 0.340625)
+texture = ExtResource("2_6sw3s")
+
+[node name="Player1" type="Node2D" parent="."]
+position = Vector2(101, 142)
+script = ExtResource("2_0vylu")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player1"]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("4_g0m11")
+
+[node name="Node2D" type="Node2D" parent="Player1"]
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="Player1"]
+offset_left = -23.0
+offset_top = 19.0
+offset_right = 29.0
+offset_bottom = 28.0
+value = 100.0
+texture_over = ExtResource("5_5qq3q")
+tint_progress = Color(1, 0, 0, 1)
+
+[node name="Player2" type="Node2D" parent="."]
+position = Vector2(39, 142)
+script = ExtResource("4_6ovae")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player2"]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("6_5qq3q")
+
+[node name="Minotaur" type="Node2D" parent="." groups=["enemies"]]
+position = Vector2(270, 134)
+script = ExtResource("5_ivkwx")
+
+[node name="Sprite2D" type="Sprite2D" parent="Minotaur"]
+modulate = Color(1, 0, 0, 1)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("8_g0m11")
+flip_h = true
+
+[node name="Nightborne" type="Node2D" parent="." groups=["enemies"]]
+position = Vector2(338, 121)
+script = ExtResource("6_6sw3s")
+
+[node name="Sprite2D" type="Sprite2D" parent="Nightborne"]
+modulate = Color(1, 0, 0, 1)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("10_5qq3q")
+flip_h = true
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("7_g0m11")
+
+[node name="ActionMenu" type="VBoxContainer" parent="UI"]
+layout_mode = 1
+offset_left = 5.0
+offset_top = 3.0
+offset_right = 76.0
+offset_bottom = 174.0
+
+[node name="Attack1" type="Button" parent="UI/ActionMenu"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 6
+text = "Attack1"
+
+[node name="Attack2" type="Button" parent="UI/ActionMenu"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 6
+text = "Attack 2"
+
+[node name="Defend" type="Button" parent="UI/ActionMenu"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 6
+text = "Defend"
+
+[node name="Charge" type="Button" parent="UI/ActionMenu"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 6
+text = "Charge"
+
+[node name="Item" type="Button" parent="UI/ActionMenu"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 6
+text = "Item"
+
+[node name="TargetSelector" type="Control" parent="UI"]
+layout_mode = 1
+anchors_preset = 0
+offset_left = 120.0
+offset_top = -3.0
+offset_right = 402.0
+offset_bottom = 219.0
+script = ExtResource("8_2edba")
+
+[node name="ButtonsContainer" type="VBoxContainer" parent="UI/TargetSelector"]
+layout_mode = 1
+offset_right = 191.0
+offset_bottom = 207.0
+
+[node name="BattleLog" type="RichTextLabel" parent="UI"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 22.0
+offset_top = 180.0
+offset_right = 370.0
+offset_bottom = 203.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+scroll_following = true
