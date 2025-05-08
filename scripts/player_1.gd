@@ -4,20 +4,15 @@ var max_hp = 100
 var hp = 100
 var is_charging = false
 
-const CRITICAL_CHANCE = 0.1
-const DAMAGE_VARIATION = 0.2
+#const CRITICAL_CHANCE = 0.1
+#const DAMAGE_VARIATION = 0.2
 
 func is_dead():
 	return hp <= 0
 
 func attack(target, base_dmg: int, crit_mult: float):
-	var dmg = base_dmg + randf_range(-base_dmg * DAMAGE_VARIATION, base_dmg * DAMAGE_VARIATION)
-	var is_crit = randf() < CRITICAL_CHANCE
-	if is_crit:
-		dmg *= (1 + crit_mult)
-	if is_charging:
-		dmg *= 2
-		is_charging = false
+	var dmg = base_dmg
+	$AnimationPlayer.play("Hit")
 	target.receive_damage(int(dmg))
 	$"../UI".show_battle_message(name + " dealt " + str(int(dmg)) + " to " + target.name)
 
@@ -27,6 +22,7 @@ func receive_damage(dmg):
 
 func heal(amount):
 	hp = min(max_hp, hp + amount)
+	$AnimationPlayer.play("Heal")
 	update_ui()
 	$"../UI".show_battle_message(name + " recovered " + str(amount) + " HP")
 

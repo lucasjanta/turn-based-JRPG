@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bb8yx0g2hcv3j"]
+[gd_scene load_steps=27 format=3 uid="uid://bb8yx0g2hcv3j"]
 
 [ext_resource type="Script" uid="uid://goxlrk6yfaa" path="res://scripts/CombatScene.gd" id="1_ik0t7"]
 [ext_resource type="Script" uid="uid://m8mkcnwk0wu6" path="res://scripts/player_1.gd" id="2_0vylu"]
@@ -12,6 +12,190 @@
 [ext_resource type="Script" uid="uid://gxerhqf8ei5m" path="res://scripts/target_selector.gd" id="8_2edba"]
 [ext_resource type="Texture2D" uid="uid://c121cgapn718r" path="res://assets/Minotaur.png" id="8_g0m11"]
 [ext_resource type="Texture2D" uid="uid://l2wdomphjhgi" path="res://assets/Nightborne.png" id="10_5qq3q"]
+
+[sub_resource type="Animation" id="Animation_g0m11"]
+resource_name = "Hit"
+length = 0.4
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(40, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_5qq3q"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_g5ebj"]
+resource_name = "Heal"
+length = 0.4
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -10), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ohwxf"]
+_data = {
+&"Heal": SubResource("Animation_g5ebj"),
+&"Hit": SubResource("Animation_g0m11"),
+&"RESET": SubResource("Animation_5qq3q")
+}
+
+[sub_resource type="Animation" id="Animation_ohwxf"]
+resource_name = "Hit"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(80, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_blj0x"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_6r8bj"]
+resource_name = "Heal"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(10, -10), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_da1ml"]
+_data = {
+&"Heal": SubResource("Animation_6r8bj"),
+&"Hit": SubResource("Animation_ohwxf"),
+&"RESET": SubResource("Animation_blj0x")
+}
+
+[sub_resource type="Animation" id="Animation_da1ml"]
+resource_name = "Hit"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-40, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_lef5q"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_aepks"]
+_data = {
+&"Hit": SubResource("Animation_da1ml"),
+&"RESET": SubResource("Animation_lef5q")
+}
+
+[sub_resource type="Animation" id="Animation_ff51q"]
+resource_name = "Hit"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-80, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_gcf8m"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dobui"]
+_data = {
+&"Hit": SubResource("Animation_ff51q"),
+&"RESET": SubResource("Animation_gcf8m")
+}
 
 [node name="CombatScene" type="Node2D"]
 script = ExtResource("1_ik0t7")
@@ -36,6 +220,11 @@ offset_right = 34.0
 offset_bottom = -12.0
 text = "HP: 100"
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Player1"]
+libraries = {
+&"": SubResource("AnimationLibrary_ohwxf")
+}
+
 [node name="Player2" type="Node2D" parent="."]
 position = Vector2(39, 142)
 script = ExtResource("4_6ovae")
@@ -50,6 +239,11 @@ text = "HP: 100"
 [node name="Sprite2D" type="Sprite2D" parent="Player2"]
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("6_5qq3q")
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="Player2"]
+libraries = {
+&"": SubResource("AnimationLibrary_da1ml")
+}
 
 [node name="Minotaur" type="Node2D" parent="." groups=["enemies"]]
 position = Vector2(270, 134)
@@ -68,6 +262,11 @@ offset_right = 29.0
 offset_bottom = -39.0
 text = "HP: 100"
 
+[node name="MinoAnim" type="AnimationPlayer" parent="Minotaur"]
+libraries = {
+&"": SubResource("AnimationLibrary_aepks")
+}
+
 [node name="Nightborne" type="Node2D" parent="." groups=["enemies"]]
 position = Vector2(338, 121)
 script = ExtResource("6_6sw3s")
@@ -84,6 +283,11 @@ offset_top = -34.0
 offset_right = 28.0
 offset_bottom = -11.0
 text = "HP: 100"
+
+[node name="NightAnim" type="AnimationPlayer" parent="Nightborne"]
+libraries = {
+&"": SubResource("AnimationLibrary_dobui")
+}
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
