@@ -42,7 +42,11 @@ func use_item(item):
 func special_move(target):
 	var dmg = randi_range(15, 30)
 	target.receive_damage(dmg)
+	
+func heal(amount):
+	hp = min(max_hp, hp + amount)
+	update_ui()
+	$UI.show_battle_message(name + " recovered " + str(amount) + " HP")
 
 func update_ui():
-	# update HP bars, etc.
-	pass
+	$hplabel4.text = "HP: " + str(hp)

@@ -19,7 +19,7 @@ func show_targets(targets):
 		$ButtonsContainer.add_child(btn)
 
 	# Exibe o seletor
-	self.show()
+	show()
 
 func _on_target_selected(target):
 	if target_callback != null:

@@ -25,23 +25,10 @@ func receive_damage(dmg):
 	hp = max(0, hp - dmg)
 	update_ui()
 
-func defend():
-	$"../UI".show_battle_message(name + " is defending")
-	# reduce damage next turn (not implemented in detail here)
-
-func charge():
-	is_charging = true
-	$"../UI".show_battle_message(name + " is charging a powerful attack!")
-
-func use_item(item):
-	if item == "potion":
-		hp = min(max_hp, hp + 30)
-		update_ui()
-		$"../UI".show_battle_message(name + " used a potion")
-
-func special_move(target):
-	var dmg = randi_range(15, 30)
-	target.receive_damage(dmg)
+func heal(amount):
+	hp = min(max_hp, hp + amount)
+	update_ui()
+	$"../UI".show_battle_message(name + " recovered " + str(amount) + " HP")
 
 func update_ui():
 	$hplabel.text = "HP: " + str(hp)

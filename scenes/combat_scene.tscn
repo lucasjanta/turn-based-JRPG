@@ -61,6 +61,13 @@ scale = Vector2(1.5, 1.5)
 texture = ExtResource("8_g0m11")
 flip_h = true
 
+[node name="hplabel3" type="Label" parent="Minotaur"]
+offset_left = -29.0
+offset_top = -62.0
+offset_right = 29.0
+offset_bottom = -39.0
+text = "HP: 100"
+
 [node name="Nightborne" type="Node2D" parent="." groups=["enemies"]]
 position = Vector2(338, 121)
 script = ExtResource("6_6sw3s")
@@ -70,6 +77,13 @@ modulate = Color(1, 0, 0, 1)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("10_5qq3q")
 flip_h = true
+
+[node name="hplabel4" type="Label" parent="Nightborne"]
+offset_left = -30.0
+offset_top = -34.0
+offset_right = 28.0
+offset_bottom = -11.0
+text = "HP: 100"
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
@@ -93,20 +107,10 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 6
 text = "Attack 2"
 
-[node name="Defend" type="Button" parent="UI/ActionMenu"]
+[node name="Heal" type="Button" parent="UI/ActionMenu"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 6
-text = "Defend"
-
-[node name="Charge" type="Button" parent="UI/ActionMenu"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 6
-text = "Charge"
-
-[node name="Item" type="Button" parent="UI/ActionMenu"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 6
-text = "Item"
+text = "Heal"
 
 [node name="TargetSelector" type="Control" parent="UI"]
 layout_mode = 1
@@ -136,4 +140,5 @@ offset_bottom = 203.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 8
 scroll_following = true
