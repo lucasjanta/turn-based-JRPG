@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://bb8yx0g2hcv3j"]
+[gd_scene load_steps=31 format=3 uid="uid://bb8yx0g2hcv3j"]
 
 [ext_resource type="Script" uid="uid://goxlrk6yfaa" path="res://scripts/CombatScene.gd" id="1_ik0t7"]
 [ext_resource type="Script" uid="uid://m8mkcnwk0wu6" path="res://scripts/player_1.gd" id="2_0vylu"]
@@ -14,6 +14,7 @@
 [ext_resource type="Script" uid="uid://gxerhqf8ei5m" path="res://scripts/target_selector.gd" id="8_2edba"]
 [ext_resource type="Texture2D" uid="uid://c121cgapn718r" path="res://assets/Minotaur.png" id="8_g0m11"]
 [ext_resource type="Texture2D" uid="uid://l2wdomphjhgi" path="res://assets/Nightborne.png" id="10_5qq3q"]
+[ext_resource type="Script" uid="uid://31odp55yjsmh" path="res://scripts/end_menu.gd" id="15_blj0x"]
 [ext_resource type="Texture2D" uid="uid://b6fy6wt1k3ib8" path="res://assets/arrow.png" id="15_ohwxf"]
 
 [sub_resource type="Animation" id="Animation_g0m11"]
@@ -438,7 +439,41 @@ theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 8
 scroll_following = true
 
+[node name="end_menu" type="VBoxContainer" parent="UI"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 149.0
+offset_top = 31.0
+offset_right = 220.0
+offset_bottom = 136.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+script = ExtResource("15_blj0x")
+
+[node name="Label" type="Label" parent="UI/end_menu"]
+layout_mode = 2
+text = "YOU WIN"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="retryButton" type="Button" parent="UI/end_menu"]
+layout_mode = 2
+text = "Retry"
+
+[node name="quitButton" type="Button" parent="UI/end_menu"]
+layout_mode = 2
+text = "Quit"
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(43, 96)
 scale = Vector2(0.5625, 0.5625)
 texture = ExtResource("15_ohwxf")
+
+[connection signal="pressed" from="UI/end_menu/retryButton" to="UI/end_menu" method="_on_retry_button_pressed"]
+[connection signal="pressed" from="UI/end_menu/quitButton" to="UI/end_menu" method="_on_quit_button_pressed"]

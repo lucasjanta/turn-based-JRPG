@@ -4,9 +4,6 @@ var max_hp = 100
 var hp = 100
 var is_charging = false
 
-#const CRITICAL_CHANCE = 0.1
-#const DAMAGE_VARIATION = 0.2
-
 func is_dead():
 	return hp <= 0
 

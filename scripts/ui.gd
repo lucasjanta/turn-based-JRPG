@@ -25,7 +25,7 @@ func show_player_options(player):
 		$"../Sprite2D".visible = true
 		$"../Sprite2D".global_position.x = 43.0
 		$ActionMenu/Attack1.text = "Strike (15)"
-		$ActionMenu/Attack2.text = "Area Slash (15 All)"
+		$ActionMenu/Attack2.text = "Area Slash (10-20 All)"
 		$ActionMenu/Heal.text = "Group Heal (15)"
 		$ActionMenu/Attack1.visible = true
 		$ActionMenu/Attack2.visible = true

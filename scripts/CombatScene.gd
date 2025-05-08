@@ -1,6 +1,5 @@
 extends Node2D
 
-# Holds player and enemy characters
 var players = []
 var enemies = []
 var turn_queue = []
@@ -17,9 +16,9 @@ func _ready():
 
 func start_next_turn():
 	if is_battle_over():
+		open_end_menu()
 		return
 		
-	# Remove mortos da fila
 	turn_queue = turn_queue.filter(func(actor): return not actor.is_dead())
 
 	if turn_queue.size() == 0:
@@ -43,9 +42,11 @@ func is_battle_over():
 
 	if all_players_dead:
 		$UI.show_battle_message("All players defeated. You lose!")
+		$UI/end_menu/Label.text = "YOU LOSE"
 		return true
 	elif all_enemies_dead:
 		$UI.show_battle_message("All enemies defeated. You win!")
+		$UI/end_menu/Label.text = "YOU WIN"
 		return true
 	return false
 
@@ -65,7 +66,7 @@ func on_player_action(action: String, target):
 			"Attack2":
 				for enemy in enemies:
 					if not enemy.is_dead():
-						current_actor.attack(enemy, 15, 0.1)
+						current_actor.attack(enemy, randi_range(10, 20), 0.1)
 			"Heal":
 				for player in players:
 					if not player.is_dead():
@@ -102,3 +103,8 @@ func perform_enemy_action(enemy):
 
 	await get_tree().create_timer(1.0).timeout
 	start_next_turn()
+	
+func open_end_menu():
+	$UI/end_menu.visible = true
+	
+	
